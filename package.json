@@ -3,7 +3,7 @@
   "version": "0.0.3",
   "private": false,
   "bin": {
-    "generate": "scripts/projectGenerator.js"
+    "rnts": "scripts/projectGenerator.js"
   },
   "scripts": {
     "start": "react-native start --reset-cache",
