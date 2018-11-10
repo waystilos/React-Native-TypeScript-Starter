@@ -1,9 +1,9 @@
 {
   "name": "react-native-typescript-starter",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "bin": {
-    "generate": "./scripts/projectGenerator.js"
+    "generate": "scripts/projectGenerator.js"
   },
   "scripts": {
     "start": "react-native start --reset-cache",
