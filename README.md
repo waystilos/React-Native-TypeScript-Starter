@@ -10,13 +10,18 @@ brew install watchman
 If you want to use NPM:
 
 ```
-npm install -g react-native-cli
+npm install -g react-native-typescript-starter
 ```
 
 If you want to use Yarn:
 
 ```
-yarn global add react-native-cli
+yarn global add react-native-typescript-starter
+```
+
+When that installs, you can generate a project by typing:
+```
+rnts
 ```
 
 If you have any problems, please file an issue. Thanks!
