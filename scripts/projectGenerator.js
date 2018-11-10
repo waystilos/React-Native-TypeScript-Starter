@@ -1,4 +1,4 @@
-#!/usr/bin/env/ node
+#!/usr/bin/env node
 
 const fse = require('fs-extra');
 const path = require('path');
@@ -6,14 +6,14 @@ const current_directory = process.cwd();
 
 const inquirer = require('inquirer');
 
-const CHOICES = fse.readdirSync(`./templates/`);
+const CHOICES = fse.readdirSync(`templates/`);
 
 const QUESTIONS = [
   {
     name: 'project-choice',
     type: 'list',
     message: 'What project template would you like to generate?',
-    choices: CHOICES,
+    choices: CHOICES
   },
   {
     name: 'project-name',
@@ -23,11 +23,11 @@ const QUESTIONS = [
       if (/^([A-Za-z\-\_\d])+$/.test(input)) return true;
       else
         return 'Project name may only include letters, numbers, underscores and hashes.';
-    },
-  },
+    }
+  }
 ];
 
-inquirer.prompt(QUESTIONS).then((answers) => {
+inquirer.prompt(QUESTIONS).then(answers => {
   const projectChoice = answers['project-choice'];
   const projectName = answers['project-name'];
   const templatePath = `./templates/${projectChoice}`;
@@ -36,7 +36,7 @@ inquirer.prompt(QUESTIONS).then((answers) => {
 });
 
 const createDirectoryContents = async (templatePath, newProjectPath) => {
-  fse.copy(templatePath, `${current_directory}/${newProjectPath}`, (err) => {
+  fse.copy(templatePath, `${current_directory}/${newProjectPath}`, err => {
     if (err) return console.error(err);
     console.log('success!');
   });
