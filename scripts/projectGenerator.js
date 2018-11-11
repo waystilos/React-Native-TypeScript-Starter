@@ -6,7 +6,7 @@ const current_directory = process.cwd();
 
 const inquirer = require('inquirer');
 
-const CHOICES = fse.readdirSync(`templates/`);
+const CHOICES = fse.readdirSync(`/${__dirname}/../templates`);
 
 const QUESTIONS = [
   {
