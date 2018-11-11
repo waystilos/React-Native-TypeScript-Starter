@@ -1,12 +1,9 @@
 #!/usr/bin/env node
 
-const fse = require('fs-extra');
-const path = require('path');
-const current_directory = process.cwd();
-
 const inquirer = require('inquirer');
+const fs = require('fs');
 
-const CHOICES = fse.readdirSync(`/${__dirname}/../templates`);
+const CHOICES = fs.readdirSync(`${__dirname}/../templates`);
 
 const QUESTIONS = [
   {
@@ -27,17 +24,32 @@ const QUESTIONS = [
   }
 ];
 
+const CURRENT_DIRECTORY = process.cwd();
+
 inquirer.prompt(QUESTIONS).then(answers => {
   const projectChoice = answers['project-choice'];
   const projectName = answers['project-name'];
-  const templatePath = `./templates/${projectChoice}`;
-  fse.mkdirSync(`${current_directory}/${projectName}`);
+  const templatePath = `${__dirname}/../templates/${projectChoice}`;
+
+  fs.mkdirSync(`${CURRENT_DIRECTORY}/${projectName}`);
+
   createDirectoryContents(templatePath, projectName);
 });
 
-const createDirectoryContents = async (templatePath, newProjectPath) => {
-  fse.copy(templatePath, `${current_directory}/${newProjectPath}`, err => {
-    if (err) return console.error(err);
-    console.log('success!');
+function createDirectoryContents(templatePath, newProjectPath) {
+  const filesToCreate = fs.readdirSync(templatePath);
+
+  filesToCreate.forEach(file => {
+    const origFilePath = `${templatePath}/${file}`;
+
+    // get stats about the current file
+    const stats = fs.statSync(origFilePath);
+
+    if (stats.isFile()) {
+      const contents = fs.readFileSync(origFilePath, 'utf8');
+
+      const writePath = `${CURRENT_DIRECTORY}/${newProjectPath}/${file}`;
+      fs.writeFileSync(writePath, contents, 'utf8');
+    }
   });
-};
+}
