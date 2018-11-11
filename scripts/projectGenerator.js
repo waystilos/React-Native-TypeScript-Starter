@@ -50,6 +50,14 @@ function createDirectoryContents(templatePath, newProjectPath) {
 
       const writePath = `${CURRENT_DIRECTORY}/${newProjectPath}/${file}`;
       fs.writeFileSync(writePath, contents, 'utf8');
+    } else if (stats.isDirectory()) {
+      fs.mkdirSync(`${CURRENT_DIRECTORY}/${newProjectPath}/${file}`);
+
+      // recursive call
+      createDirectoryContents(
+        `${templatePath}/${file}`,
+        `${newProjectPath}/${file}`
+      );
     }
   });
 }
