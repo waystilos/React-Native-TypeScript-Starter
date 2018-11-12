@@ -4,8 +4,10 @@ const inquirer = require('inquirer');
 const ora = require('ora');
 const fs = require('fs');
 const fse = require('fs-extra');
+const child_process = require('child_process');
 const { promisify } = require('util');
 
+const exec = promisify(child_process.exec);
 const readdir = promisify(fs.readdir);
 const CURRENT_DIRECTORY = process.cwd();
 
@@ -36,18 +38,26 @@ async function copyDirectory(filePath) {
   const projectName = answers['project-name'];
   const templatePath = `${filePath}/${projectChoice}`;
 
-  fs.mkdirSync(`${CURRENT_DIRECTORY}/${projectName}`);
   createDirectoryContents(templatePath, projectName);
 }
 
-copyDirectory(`${__dirname}/../templates`);
+function main() {
+  copyDirectory(`${__dirname}/../templates`);
+}
 
 async function createDirectoryContents(templatePath, newProjectPath) {
   try {
     const spinner = ora('Generating project, hold up...').start();
-    await fse.copy(templatePath, newProjectPath);
-    spinner.succeed('All done');
+    await exec(`react-native init ${newProjectPath}`, (error, stdout) => {
+      fse.copy(templatePath, `${CURRENT_DIRECTORY}/${newProjectPath}/`);
+      spinner.succeed('All done');
+      if (error !== null) {
+        console.log('exec error: ' + error);
+      }
+    });
   } catch (error) {
     console.error(error);
   }
 }
+
+main();
