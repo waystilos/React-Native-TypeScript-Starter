@@ -20,10 +20,9 @@ yarn global add react-native-typescript-starter
 ```
 
 When that installs, you can generate a project by typing:
+
 ```
 rnts
 ```
 
-```cd``` into your project and run ```npm i``` or ```yarn install```
-
-If you have any problems, please file an issue. Thanks!
+`cd` into your project and run `npm i` or `yarn install`
