@@ -5,7 +5,7 @@
   "private": false,
   "author": {
     "name": "Ardon Bailey",
-    "email": "waystylez1@gmail.com",
+    "email": "waystylez1@gmail.com"
   },
   "bin": {
     "rnts": "./scripts/projectGenerator.js"
