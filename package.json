@@ -1,6 +1,6 @@
 {
   "name": "react-native-typescript-starter",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "repository": "waystilos/React-Native-TypeScript-Starter",
   "private": false,
   "author": {
@@ -10,9 +10,9 @@
   "bin": {
     "rnts": "./scripts/projectGenerator.js"
   },
-    "engines": {
-      "node": ">=6"
-    },
+  "engines": {
+    "node": ">=6"
+  },
   "scripts": {
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
@@ -50,15 +50,15 @@
     "ts-jest": "^23.10.4",
     "typescript": "^3.1.6"
   },
-    "keywords": [
-      "cli",
-      "terminal",
-      "generator",
-      "console",
-      "typescript",
-      "react-native",
-      "starter"
-    ],
+  "keywords": [
+    "cli",
+    "terminal",
+    "generator",
+    "console",
+    "typescript",
+    "react-native",
+    "starter"
+  ],
   "jest": {
     "preset": "react-native",
     "moduleFileExtensions": [

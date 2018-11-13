@@ -45,11 +45,24 @@ function main() {
   copyDirectory(`${__dirname}/../templates`);
 }
 
+async function installLatest() {
+  try {
+    await exec(`yarn install`, (error, stdout) => {
+      if (error !== null) {
+        console.log('exec error: ' + error);
+      }
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 async function createDirectoryContents(templatePath, newProjectPath) {
   try {
     const spinner = ora('Generating project, hold up...').start();
     await exec(`react-native init ${newProjectPath}`, (error, stdout) => {
       fse.copy(templatePath, `${CURRENT_DIRECTORY}/${newProjectPath}/`);
+      installLatest();
       spinner.succeed('All done');
       if (error !== null) {
         console.log('exec error: ' + error);
