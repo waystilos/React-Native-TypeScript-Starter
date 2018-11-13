@@ -1,5 +1,7 @@
 # React-Native-TypeScript-Starter
 
+[![Build Status](https://travis-ci.com/waystilos/React-Native-TypeScript-Starter.svg?branch=master)](https://travis-ci.com/waystilos/React-Native-TypeScript-Starter)
+
 Before you start this up, make sure you installed:
 
 ```
