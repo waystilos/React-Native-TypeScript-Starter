@@ -3,6 +3,7 @@
 Before you start this up, make sure you installed:
 
 ```
+npm install -g react-native-cli
 brew install node
 brew install watchman
 ```
