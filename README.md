@@ -1,4 +1,4 @@
-# React-Native-TypeScript-Starter
+# Starter template for React Native w/ TypeScript without Expo
 
 [![Build Status](https://travis-ci.com/waystilos/React-Native-TypeScript-Starter.svg?branch=master)](https://travis-ci.com/waystilos/React-Native-TypeScript-Starter)
 
